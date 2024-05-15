@@ -17,7 +17,5 @@
 
 <br>
 
-<div id='linguagem-ubiqua' />
-
-## Linguagem Ubíqua
+## Linguagem Ubíqua [](#linguagem-ubiqua)
 
