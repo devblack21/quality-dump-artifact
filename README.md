@@ -36,6 +36,6 @@ Um bom software é composto pela perfeita junção entre os seguintes pilares:
       - Nesse pilar lidamos com <b>Testes unitários</b>, <b>BDD</b>, <b>TaaC</b>, <b>Testes Funcionais</b> e <b>Testes de Performance.</b>
       
 - #### Operacional
-    - Pilar responsável pela condução da aplicação até os ambientes de implantações e produção e sua sustentação. 
+    - Pilar responsável pela condução da aplicação até os ambientes de Testes e Produção assim como sua Sustentação no decorrer do tempo. 
       - Nesse pilar lidamos com <b>12 Factors</b>, <b>CI/CD</b>, <b>Implantações de serviços</b> e <b>Sustentação.</b>
 
