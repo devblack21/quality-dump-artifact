@@ -9,7 +9,9 @@ Arquitetura de Soluções e Boas práticas quando o assunto for relacionado a im
 
 Um bom software é composto pela perfeita junção entre os seguintes de pilares:
 
-<img src="img/conjuntos.jpg" width="350" title="hover text">
+<p align="center">
+    <img src="img/conjuntos.jpg" width="350" title="hover text">
+</p>
 
 - #### Arquitetura de Soluções
   - Pilar responsável pelo desenho da solução como um todo, as integrações feitas entre os serviços e tecnologias.
