@@ -3,7 +3,7 @@
 ## Descrição Técnica 
 
 > É uma forma de desenvolver software com o foco no coração da aplicação - oque chamamos de 
-> domínio - tendo o objetivo de entender suas regras, preocessos e complexidades, 
+> domínio - tendo o objetivo de entender suas regras, processos e complexidades, 
 > separando-as assim de outros pontos complexos que normalmente são adicionados durante 
 > o processo de desenvolvimento.
 
@@ -20,7 +20,7 @@
 ## Linguagem Ubíqua
 
 A Linguagem Ubíqua é um conceito central de DDD. Ela consistem de um conjunto de termos que devem
-ser plenamente entendidos por todos os envolvidos - por Especialista do dominio e por Desenvolvedores
+ser plenamente entendidos por todos os envolvidos no projeto (por Especialista do dominio e por Desenvolvedores)
 
 Por exemplo:
 
@@ -35,7 +35,7 @@ utilizados para cada coisa no projeto.
 
 Por exemplo:
 
-em um sistema de livraria, os envolvidos levantaram o seguinte mapa de linguagem ubíqua:
+Em um sistema de livraria, os envolvidos levantaram o seguinte mapa de linguagem ubíqua:
 
     Livro : Representa o livro fisico que será alugado
     Locação : Representa o aluguel dos livros feito pelo cliente
