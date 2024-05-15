@@ -20,7 +20,7 @@
 ## Linguagem Ubíqua
 
 A Linguagem Ubíqua é um conceito central de DDD. Ela consistem de um conjunto de termos que devem
-ser plenamente entendidos por todos os envolvidos no projeto (por Especialista do dominio e por Desenvolvedores)
+ser plenamente entendidos por todos os envolvidos no projeto (por Especialista do dominio e por Desenvolvedores).
 
 Por exemplo:
 
@@ -42,7 +42,7 @@ Em um sistema de livraria, os envolvidos levantaram o seguinte mapa de linguagem
     Cliente : Representa o cliente que faz as locações dos livros na livraria
     Pagamento : Representa o pagemento feito no momento da locação
 
-Nota-se que o exemplo acima é semelhante ao um dicionário
+Nota-se que o exemplo acima é semelhante ao um dicionário.
 
 OBS: é uma boa prática ter uma documentação com o dicionário que descreve oque cada termo
 representa no projeto. Assim garatimos que todos os envolvidos conversem a mesma lingua. 
