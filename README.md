@@ -7,7 +7,7 @@ Esse material servirá como um guia sobre os seguintes assuntos: DDD, Arquitetur
 Arquitetura de Soluções e Boas práticas quando o assunto for relacionado a implantações de aplicações.
 
 
-Um bom software é composto pela perfeita junção entre os seguintes de pilares:
+Um bom software é composto pela perfeita junção entre os seguintes pilares:
 
 <p align="center">
     <img src="img/conjuntos.jpg" width="350" title="hover text">
@@ -33,9 +33,9 @@ Um bom software é composto pela perfeita junção entre os seguintes de pilares
 - #### Testes de Qualidade
     - Pilar responsável pela garantia da qualidade do software, muitas das vezes é ignorado e substimado
       - Muitos desenvolvedores ignoram esse pilar, por achar perda de tempo ou até mesmo por falta de interesse em se aprofundar no assunto.
-      - Nesse pilar lidamos com <b>Testes unitários</b>, <b>BDD</b>, <b>TaaC</b>, <b>Teste Funcional</b> e <b>Teste de Performance.</b>
+      - Nesse pilar lidamos com <b>Testes unitários</b>, <b>BDD</b>, <b>TaaC</b>, <b>Testes Funcionais</b> e <b>Testes de Performance.</b>
       
 - #### Operacional
-    - Pilar responsável pela condução da aplicação até os ambientes de implantações e produção. 
-      - Nesse pilar lidamos com <b>12 Factors</b>, <b>CI/CD</b> e <b>Implantações de serviços.</b>
+    - Pilar responsável pela condução da aplicação até os ambientes de implantações e produção e sua sustentação. 
+      - Nesse pilar lidamos com <b>12 Factors</b>, <b>CI/CD</b>, <b>Implantações de serviços</b> e <b>Sustentação.</b>
 
