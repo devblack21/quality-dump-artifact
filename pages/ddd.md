@@ -9,14 +9,12 @@
 
 ## Conceitos 
 
-- #### Linguagem Ubíqua
-- #### Domínio
-- #### Sub-Domínio
-- #### Bounded Context (Contextos delimitados)
-- #### Context Mapping (Visão estratégica)
+- #### [Linguagem Ubíqua](#linguagem-ubiqua) 
+- #### [Domínio](#linguagem-ubíqua)
+- #### [Sub-Domínio](#linguagem-ubíqua)  
+- #### [Bounded Context (Contextos delimitados)](#linguagem-ubíqua)  
+- #### [Context Mapping (Visão estratégica)](#linguagem-ubíqua)
 
 <br>
-<hr>
-<br>
 
-## Linguagem Ubíqua
+## Linguagem Ubíqua [](#linguagem-ubiqua)
