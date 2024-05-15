@@ -18,7 +18,7 @@ Um bom software é composto pela perfeita junção entre os seguintes pilares:
     - Pilar muito importante para o sucesso e bom funcionamento da solução como um todo.
     - Nesse pilar é onde encontramos fundamentos como <b>Resiliência</b>, <b>Performance</b>, <b>Escalabilidade</b>, <b>Consistência</b>, <b>Disponibilidade</b> e <b>Sustentabilidade Financeira.</b>
     - Muitos problemas de determinado produto as vezes estão na forma que ele foi arquitetado e não em como foi desenvolvido.
-    - Nesse pilar é onde lidamos também com o seguintes assuntos: <b>DDD</b> e <b>Event Storming</b>, pois com eles podemos: 
+    - Nesse pilar é onde lidamos também com o seguintes assuntos: <b><a href="pages/ddd.md">DDD</a></b> e <b><a href="">Event Storming</a></b>, pois com eles podemos: 
       - Definir uma linguagem ubiqua do produto, levantar os dominios e identificar eventos dos mesmos.
       - Mapear quais são os limites dos contextos e quem são os envolvidos.
 
