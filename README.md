@@ -3,7 +3,7 @@
 <br>
 <br>
 
-Esse material servirá como um guia sobre os seguintes assuntos: DDD, Arquitetura, Design e Testes de Software, 
+Esse material servirá como um guia sobre os seguintes assuntos: SOLID, DDD, Arquitetura, Design e Testes de Software, 
 Arquitetura de Soluções e Boas práticas quando o assunto for relacionado a implantações de aplicações.
 
 
@@ -28,7 +28,7 @@ Um bom software é composto pela perfeita junção entre os seguintes pilares:
 
 - #### Design de Software
     - Pilar responsável pela forma que será desenvolvido o software como um todo
-      - Nesse pilar lidamos com <b>Design Hexagonal</b>, <b>Clean Code</b> e <b>Design Patterns</b>.
+      - Nesse pilar lidamos com <b>Principios SOLID</b>, <b>Design Hexagonal</b>, <b>Clean Code</b> e <b>Design Patterns</b>.
   
 - #### Testes de Qualidade
     - Pilar responsável pela garantia da qualidade do software, muitas das vezes é ignorado e substimado
