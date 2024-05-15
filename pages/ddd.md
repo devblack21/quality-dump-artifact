@@ -9,7 +9,7 @@
 
 ## Conceitos 
 
-- #### [Linguagem Ubíqua](#linguagem-ubiqua) 
+- #### [Linguagem Ubíqua](#linguagem-ubíqua) 
 - #### [Domínio](#linguagem-ubíqua)
 - #### [Sub-Domínio](#linguagem-ubíqua)  
 - #### [Bounded Context (Contextos delimitados)](#linguagem-ubíqua)  
@@ -17,5 +17,5 @@
 
 <br>
 
-## Linguagem Ubíqua[](#linguagem-ubiqua)
+## Linguagem Ubíqua
 
