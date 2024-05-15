@@ -15,6 +15,8 @@
 - #### Bounded Context (Contextos delimitados)
 - #### Context Mapping (Visão estratégica)
 
-
+<br>
+<hr>
+<br>
 
 ## Linguagem Ubíqua
