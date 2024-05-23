@@ -105,6 +105,104 @@ o <b><i>Gateway de Pagamento</b></i> para realizar o <b>Pagamento</b> do <b>Alug
 
 ## Bounded Context (Contextos delimitados)
 
+É um conceito razoalvelmente fácil de se explicar, porém pode ser extremamente complexo de se implementar. Tudo 
+depende da visão global do domínio da aplicação.
+
+<b>O que significa visão global do domínio?</b>
+
+Ter uma visão global significa enxergar toda a extensão de seu domínio e eu não estou me referindo as camadas, estou me referindo ao negócio.
+
+<b>Como ter uma visão global do negócio se a aplicação ainda não foi desenvolvida ou está em processo de desenvolvimento?</b>
+
+É necessário lutar contra a IVSF “Irresistível Vontade de Sair Fazendo” e focar 
+antes em mapear seus contextos e definir os Bounded Contexts “contextos delimitados”. 
+Para determinar seus Bounded Contexts você precisa ter um bom conhecimento do negócio da empresa ou 
+ter ao seu lado um <b>Domain Expert</b>.
+
+### Domain Expert
+
+É a pessoa que entende do negócio da empresa e vai apoiar os times de desenvolvimento na modelagem do domínio, 
+definição das regras de negócio e etc. O domain expert também é responsável por definir a Ubiquitous Language
+“Linguagem Ubíqua”.
+
+
+### Rapida Introdução sobre Context Mapping 
+
+Para a aplicação ter um bom design, uma fácil manutenção / extensibilidade e o domínio ser bem modelado é 
+necessário focar em modelagem estratégica e para isso é 
+importante preocupar-se com a integridade do modelo conforme o diagrama do Context Map apresenta.
+
+Todos os conceitos do Context Map são importantes, é necessário compreender muito bem de cada um 
+deles para termos condição de realizar uma boa modelagem.
+
+
+### Big Ball of Mud - Bola de Lama
+
+A grande bola de lama. Você pode ter uma em suas mãos neste momento.
+Este conceito aborda vários aspectos negativos de sua aplicação, desde código macarrônico que 
+fere os princípios do SOLID e Clean Code até uma entidade com muitas responsabilidades em um 
+único contexto. Analise a imagem a seguir:
+
+
+<p align="center">
+    <img src="https://i0.wp.com/www.eduardopires.net.br/wp-content/uploads/2016/03/BBM.jpg?resize=404%2C255&ssl=1" width="350" title="hover text">
+</p>
+
+A entidade Produto possui diversos comportamentos, cada um destes comportamentos está ligado a 
+uma intenção da aplicação, todas as intenções são relativas ao produto em si, porém imagine a
+complexidade desta classe, quantas equipes de desenvolvimento estão compartilhando a mesma classe em comum.
+A entidade Produto atende aspectos de Aquisição, Venda, Entrega, Estoque e etc.
+Esse tipo de modelagem pode ser considerada um exemplo de Big Ball of Mud, pois
+qualquer manutenção nessa entidade pode ocasionar impactos
+sérios em diversos pontos da aplicação, é praticamente impossível de gerenciar as mudanças.
+
+<b>Como resolver ou evitar este tipo de cenário?</b>
+
+O DDD não é sobre dividir a aplicação em camadas responsáveis, o DDD é sobre modelar corretamente o domínio 
+do seu negócio. Se sua aplicação possui uma única camada de domínio e esta camada concentra todas as entidades
+do seu negócio você pode estar cometendo um grande erro de modelagem de domínio. Para aplicações que possuem
+domínios muito complexos o ideal é aplicar o conceito de Bounded Context.
+
+
+### Solução - Bounded Context 
+
+Os contextos delimitados ou bounded contexts buscam delimitar o seu domínio complexo em contextos baseados nas
+intenções do negócio. Isto significa que você deve delimitar as intenções de suas entidades
+com base no contexto que ela pertence. Analise a imagem a seguir:  
+
+<p align="center">
+    <img src="https://i0.wp.com/www.eduardopires.net.br/wp-content/uploads/2016/03/BoundedContexts.jpg?resize=363%2C279&ssl=1" width="350" title="hover text">
+</p>
+
+O domínio foi subdividido em seis pedaços, ou melhor, em seis bounded contexts, um para cada intenção de 
+negócio (Vendas, Entregas, Estoque etc.). Agora cada bounded context possui uma entidade Produto.
+Cada versão da entidade Produto é diferente nos seis bounded contexts existentes. 
+A entidade Produto possui comportamentos que atendem necessidades específicas de seu bounded context,
+a única coisa em comum entre todas as entidades Produto é sua identidade, o ProdutoId no caso. 
+A identidade em comum vai ajudar na persistência e na comunicação entre os bounded contexts.
+
+Ou seja, Bounded Context é sobre a intenção e os comportamentos dentro daquele contexto.
+
+
+<b>Representar a mesma entidade em diversos bounded contexts não seria duplicar o código?</b>
+
+De forma alguma. Duplicar código é ter a mesma responsabilidade em trechos de código diferentes.
+Neste caso existe uma segregação de comportamentos e intenções de uma entidade conforme o contexto
+em que ela está. Não importa se a entidade é persistida na mesma tabela ou em tabelas diferentes, 
+neste caso ambos os cenários são aceitos.
+
+<b>Características importantes de um bounded context</b>
+
+ - Cada bounded context pode possuir sua própria abordagem de arquitetura. Camadas de aplicação, persistência, infra-estrutura e etc.
+ - A arquitetura de um bounded context não precisa estar necessariamente no padrão DDD (Domain Model) pode ser um modelo mais simples de 3 camadas, pode implementar CQRS, Event Sourcing e etc.
+ - Cada bounded context pode possuir um meio próprio de persistência, sendo ele relacional, NoSQL, em memória / cache e etc.
+ - Os bounded contexts podem se comunicar entre si de diversas maneiras, inclusive utilizando eventos de domínio “Domain Events” conectados em um “Event Bus”.
+ - Cada bounded context possui sua própria Ubiquitous Language.
+ - Cada bounded context pode ser desenvolvido por um time de desenvolvedores diferente. Não existe necessidade de um único time conhecer a implementação de todos os contextos, pelo contrário, por motivos de segurança o fonte de um bounded context pode ser restrito a um time específico.
+
+
+Existem diversos patterns que descrevem o tipo de relacionamento entre os bounded contexts, <a href="#">clique aqui para saber mais...</a>
+
 ## Context Mapping (Visão estratégica)
 
 ## Modelagem de Dominios
