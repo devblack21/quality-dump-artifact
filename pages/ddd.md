@@ -201,7 +201,7 @@ neste caso ambos os cenários são aceitos.
  - Cada bounded context pode ser desenvolvido por um time de desenvolvedores diferente. Não existe necessidade de um único time conhecer a implementação de todos os contextos, pelo contrário, por motivos de segurança o fonte de um bounded context pode ser restrito a um time específico.
 
 
-Existem diversos patterns que descrevem o tipo de relacionamento entre os bounded contexts, <a href="#">clique aqui para saber mais...</a>
+Existem diversos patterns que descrevem o tipo de relacionamento entre os bounded contexts, <a href="pages/ddd-patterns.md">clique aqui para saber mais...</a>
 
 ## Context Mapping (Visão estratégica)
 
