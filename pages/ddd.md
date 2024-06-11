@@ -205,6 +205,66 @@ Existem diversos patterns que descrevem o tipo de relacionamento entre os bounde
 
 ## Context Mapping (Visão estratégica)
 
+O mapeamento de contexto é uma ferramenta que permite identificar a relação entre contextos delimitados e a relação entre as equipes responsáveis por eles. 
+Os mapas de contexto podem ser usados para analisar sistemas existentes ou cenários de aplicativos, mas também são adequados para considerações iniciais de design.
+
+Para a aplicação ter um bom design, uma fácil manutenção / extensibilidade e o domínio ser bem modelado é
+necessário focar em modelagem estratégica e para isso é
+importante preocupar-se com a integridade do modelo conforme o diagrama do Context Map apresenta.
+
+Todos os conceitos do Context Map são importantes, é necessário compreender muito bem de cada um
+deles para termos condição de realizar uma boa modelagem.
+
+Exemplo de um Mapa de contexto:
+
+<p align="center">
+    <img src="../img/context-map.jpg" width="900" title="hover text">
+</p>
+
+Esse exemplo foi feito baseado no sistema de aluguel de veiculos mencionado nos tópicos anteriores. Fizemos esse mapa  com os dominios e relacionamento entre os contextos delimitados,
+assim sendo possivel ter uma visão estratégica mais detalhada para facilitar a modelagem de dominios.
+
+### Melhores práticas para mapas de contexto
+
+Não há necessidade de colocar todos os padrões e relacionamentos da equipe em um grande mapa de contexto. 
+Esse mapa de contexto crescerá com o tempo e se tornará difícil de entender. Você será forçado a explicar um mapa de 
+contexto tão complexo para um grande número de partes interessadas, todas com perspectivas diferentes devido às suas funções 
+ou à natureza do seu trabalho. Portanto, é recomendável ficar atento a essas dicas:
+
+ - Prefira mapas de contexto pequenos para perguntas explícitas
+ - Documente e explique os padrões que você vai usar
+ - Trabalhe com diferentes perspectivas e múltiplos mapas de contexto para essas perspectivas
+
+#### Pequenos mapas de contexto para perguntas explícitas
+
+Os Mapas de Contexto são capazes de responder a uma grande variedade de perguntas, como:
+
+ - como o modelo de um determinado sistema se propaga através de um cenário de aplicativos?
+ - que tipo de influência uma determinada equipe tem sobre outras?
+ - quem tem influência em uma determinada equipe?
+ - como a política está sendo jogada?
+
+Como você pode ver: essas questões são muito específicas e podemos respondê-las com base em um grande mapa de contexto, 
+mas esse mapa de contexto, mais cedo ou mais tarde, se transformará em uma sobrecarga de informações.
+
+Portanto:
+
+Trabalhe com mapas de contexto menores, destinados a responder questões específicas. Inclua apenas esses padrões nesses mapas
+de contexto menores que o ajudam a responder a essas perguntas.
+
+#### Documente e explique os padrões que você vai usar
+
+O Mapeamento de Contexto é uma técnica poderosa para visualizar relacionamentos entre sistemas e equipes. 
+No entanto, eles podem se tornar difíceis de entender para pessoas que não têm experiência com Domain-Driven Design ou com padrões 
+de mapeamento de contexto. Mesmo alguns nomes de padrões não são autoexplicativos para determinados grupos de partes interessadas e 
+o mesmo se aplica a algumas das definições.
+
+Portanto:
+
+Antes de começar a desenhar mapas de contexto, você deve decidir quais dos padrões usará e fará um grande favor a si mesmo e
+às partes interessadas em seu mapa de contexto, fornecendo uma explicação desses padrões. Certifique-se de que todas as pessoas 
+que trabalham com seu mapa de contexto entendam os padrões. Exemplos são sempre uma boa ideia para tais explicações.
+
 ## Modelagem de Dominios
 
 ### Entities
