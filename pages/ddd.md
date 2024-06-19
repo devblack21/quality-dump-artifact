@@ -269,12 +269,79 @@ que trabalham com seu mapa de contexto entendam os padrões. Exemplos são sempr
 
 ### Entities
 
+Entidade não é sobre ORM, e sim algo único que é capaz ser alterado de forma contínua durante um longo período de tempo.
+
+Entidade é igual a Identidade (Entidade = Identidade). Ou seja pode mudar seu estado porém sua Identidade permanece a mesma.
+
+Entidades podem ser anêmicas ou podem conter regras de negócios. 
+
+Obs: Diferencie Entidade de Negócio de Entidade de Persistência. Entidades nos sistemas por ae são chamados de domains.
+
 ### Value Objects
+
+Objeto de Valor são objetos imutáveis que representam atributos ou propriedades especificas no domínio. Eles são definidos por 
+seus atributos e dois objetos de valor são considerados iguais se seus atributos são iguais. 
+
+Eles não contém Identidade, pois são determinados apenas por seu valor.
+
+    Endereço:
+    - Cep
+    - Rua
+    - Bairro
+    - Cidade
+    - Estado
+
+O exemplo acima é uma representação de um Objeto de Valor, ele não contém Identidade, é imutavel e dois Objetos com os mesmos 
+valores de atributos são considerados iguais.
 
 ### Aggregate
 
+É um conjunto de objetos associados que tratamos como uma unidade para propósito de mudança de dados.
+
+    Aluguel:
+    - <Livros> 
+    - Cliente
+
+O exemplo acima ilustra bem oque é um agregado, Aluguel precisa de uma lista de Livros e uma associação de um Cliente para existir,
+formando um conjunto de objetos.  
+
+O objeto Root é Alugel, onde iremos chamar de Aluguel Aggregate.
+
 ### Domain Service
 
+Primeiramente Serviço de dominio é diferente dos Services utilizados por ae kkkk.
+
+Serviço de domínio é uma operação sem estado que cumpre uma tarefa especifica do domínio (na maioria das vezes contem métodos estaticos).
+Muitas vezes, a melhor indicação de que você deve criar um Serviço no modelo de domínio é quando a operação que você precisa executar 
+parece não se encaixar como um método em um Agregado ou um Objeto de Valor.
+
+Exemplo de Domain Service:
+
+    AluguelService:
+
+        @Transactional
+        void alugar(Cliente cliente, <Livro> livros) {
+            Aluguel aluguel = new Aluguel(livros, cliente);
+            AluguelModel aluguelModel = AluguelMapper.mapFrom(aluguel);
+            AluguelRepository.salvar(aluguelModel);
+            AluguelNotification.notificarAluguel(aluguel);
+            CatalogoLivro.retirar(livros);
+        }
+
+        @Transactional
+        void devolver(Aluguel aluguel, <Livro> livros) {
+            aluguel.devolucao(livros);
+            AluguelModel aluguelModel = AluguelMapper.mapFrom(aluguel);
+            AluguelRepository.salvar(aluguelModel);
+            AluguelNotification.notificarDevolucao(aluguel);
+            CatalogoLivro.devolver(livros);
+        }
+        
+        
+
+
+### Repositorys
+ 
 ### Domain Events 
 
 ### Modules
