@@ -279,10 +279,10 @@ Obs: Diferencie Entidade de Negócio de Entidade de Persistência. Entidades nos
 
 ### Value Objects
 
-Objeto de Valor são objetos imutáveis que representam atributos ou propriedades especificas no domínio. Eles são definidos por 
+Objeto de Valor são objetos imutáveis que representam atributos ou propriedades específicas no domínio. Eles são definidos por 
 seus atributos e dois objetos de valor são considerados iguais se seus atributos são iguais. 
 
-Eles não contém Identidade, pois são determinados apenas por seu valor.
+Eles não contêm Identidade, pois são determinados apenas por seu valor.
 
     Endereço:
     - Cep
@@ -302,7 +302,7 @@ valores de atributos são considerados iguais.
     - <Livros> 
     - Cliente
 
-O exemplo acima ilustra bem oque é um agregado, Aluguel precisa de uma lista de Livros e uma associação de um Cliente para existir,
+O exemplo acima ilustra bem oque é um agregado, aluguel precisa de uma lista de Livros e uma associação de um Cliente para existir,
 formando um conjunto de objetos.  
 
 O objeto Root é Alugel, onde iremos chamar de Aluguel Aggregate.
@@ -311,9 +311,9 @@ O objeto Root é Alugel, onde iremos chamar de Aluguel Aggregate.
 
 Primeiramente Serviço de dominio é diferente dos Services utilizados por ae kkkk.
 
-Serviço de domínio é uma operação sem estado que cumpre uma tarefa especifica do domínio (na maioria das vezes contem métodos estaticos).
+Serviço de domínio é uma operação sem estado que cumpre uma tarefa específica do domínio (na maioria das vezes contem métodos estaticos).
 Muitas vezes, a melhor indicação de que você deve criar um Serviço no modelo de domínio é quando a operação que você precisa executar 
-parece não se encaixar como um método em um Agregado ou um Objeto de Valor.
+parece não se encaixar como um método num Agregado ou um Objeto de Valor.
 
 Exemplo de Domain Service:
 
@@ -341,10 +341,115 @@ Exemplo de Domain Service:
 
 
 ### Repositorys
+
+Se refere ao um local de armazemento, geralmente considerado um local de segurança ou preservação dos itens nele armazenados.
+Quando você armazena algo num repositório e depois retorna para recuperá-lo, você espera que ele esteja no mesmo estado que estava quando
+você o deixou lá (salvou). Em algum momento, você pode optar por remover o ‘item’ armazenado do repositório.
+
+Todo Agregado(Aggregate) terá um Repositório. De modo geral, existe uma relação um-para-um entre tipo Agregado e um Repositório.
  
+    Dica: Deixe o Repositorio para o final, pois não faz sentido modelar o repositório antes de da definição e mapeamento dos domínios.
+
 ### Domain Events 
+
+"Use eventos de domínio para capturar uma ocorrência de algo que aconteceu no domínio." (Vernon, Vaughn)
+
+A essência de um evento de domínio é que você o usa para capturar coisas que podem desencadear uma mudança no estado do 
+aplicativo que você desenvolve. Esses objetos de evento são processados para causar alterações no sistema e armazenamento para 
+fornecer um AuditLog.
+
+Todo evento deve ser representado numa ação realizada no passado
+
+Exemplo:
+
+    - VeiculoAlugado
+    - VeiculoDevolvido
+    - VeiculoEmManutenção
+    - VeiculoDisponibilizado
+
+Nota-se que nos exemplos acima os eventos gerados representam mudança de estados no domínio, onde essas mudanças são 
+no passado, assim podendo notificar outros Bounded Context que houve devida mudança, e sendo possivel auditar, armazenar, 
+ou invocar outras funções e processamentos.
+
+Componentes:
+
+    - Event
+    - Handler: Executa o processamento quando um evento é chamado (fica ouvindo os eventos de domínios)
+    - Event Dispatcher: Reponsável por armazenar e executar os handlers de um evento quando ele for disparado (publica os eventos de domínios)
 
 ### Modules
 
+Num contexto DDD, módulos no seu modelo servem como contêineres nomeados para classes de objetos de domínio que são altamente 
+coesas entre si. O objetivo deve ser baixo acoplamento entre as classes que estão em módulos diferentes. Como os módulos usados no DDD 
+não são compartimentos de armazenamento anêmicos ou genéricos, também é importante nomear adequadamente os módulos.
+
+Ou seja, é uma forma de organizar a sua aplicação em componentes, facilitando a compreensão e manuseio das partes da sua aplicação 
+e domínios e agregados.
+
+O módulo deve:
+
+    - Respeitar a linguagem universal (não necessariamente deve ser o nome da aplicação ou empresa, 
+    o nome do módulo deve gritar oque está destinado a fazer)
+    
+    - Baixo acoplamento 
+
+    - Um ou mais agregados devem estar juntos somente se fizer sentido
+
+    - Organizado pelo domínio/subdomínio e não pelo tipo de objetos
+
+    - Devem respeitar a mesma divisão quando estão em camadas diferentes
+
 ### Factories
 
+Deloque a responsabilidade de criar instâncias de objetos complexos e agregados para um objeto separado, que não pode 
+ter responsabilidade no modelo de domínio, mas inda faz parte do ‘design’ do domínio. Forneça uma ‘interface’ que encapsula
+toda a criação complexa e qua não exija que o cliente faça referência às classes concretas dos objetos que são instaciados.
+Crie aggregates inteiros de uma única vez, reforçando a suas invariantes.
+
+Ou seja, uma factory faz parte do 'design' do domínio, mas não faz parte da modelagem do domínio. (ela tem a intenção de 
+auxiliar na criação de domínios e agregados).
+
+Detalhe: Factory é um design pattern criacional (GOF).
+
+Exemplo:
+
+    - AluguelFactory:
+
+    public static Aluguel createAluguel(Cliente cliente, <Livro> livros) throws InvalidExceptions {
+        validarCliente(cliente);
+        validarLivros(livros);
+        return new Aluguel(livros, cliente);
+    }
+
+    private static void validarCliente(Cliente cliente) throws ValidationExceptions {
+        // codigo de validação
+    }   
+
+    private static void validarLivros(<Livro> livros) throws ValidationExceptions {
+        // codigo de validação
+    } 
+
+Com base no exemplo acima podemos substituir a criação do objeto Aluguel que fizemos no nosso Domain Service e
+utilizar a classe AluguelFactory, pois ela nos disponibiliza um modo refinado de criar o nosso objeto. Note que no exemplo 
+acima colocamos até uma série de validações, deixando a nossa factory ainda mais rica, ou seja, quem for fazer o uso 
+da mesma não precisa se preocupar com validações e como criar o agregado Aluguel, e apenas criar.
+
+    AluguelService:
+
+        @Transactional
+        void alugar(Cliente cliente, <Livro> livros) throws ValidationExceptions {
+            Aluguel aluguel = AluguelFactory.createAluguel(cliente, livros);
+            AluguelModel aluguelModel = AluguelMapper.mapFrom(aluguel);
+            AluguelRepository.salvar(aluguelModel);
+            AluguelNotification.notificarAluguel(aluguel);
+            CatalogoLivro.retirar(livros);
+        }
+
+        @Transactional
+        void devolver(Aluguel aluguel, <Livro> livros) {
+            aluguel.devolucao(livros);
+            AluguelModel aluguelModel = AluguelMapper.mapFrom(aluguel);
+            AluguelRepository.salvar(aluguelModel);
+            AluguelNotification.notificarDevolucao(aluguel);
+            CatalogoLivro.devolver(livros);
+        }
